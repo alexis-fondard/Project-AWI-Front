@@ -1,22 +1,42 @@
 import React from 'react';
-import './App.css';
-import logo from './logo.svg';
-import logo2 from './BG_Ultime.png';
+import { makeStyles } from '@mui/material/styles';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import { Link as RouterLink } from 'react-router-dom';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-const Header: React.FC = () => {
+const Header = () => {
+
   return (
-    <header className="App-header">
-      <nav>
-        <h1>Gestion des bénévoles pour le festival du jeu de société</h1>
-        <img src={logo2} className="App-logo" alt="logo" />
-        <ul>
-          <li><a href="#">Accueil</a></li>
-          <li><a href="#">Bénévoles</a></li>
-          <li><a href="#">Jeux</a></li>
-          <li><a href="#">Affectations</a></li>
-        </ul>
-      </nav>
-    </header>
+    <div className="root">
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton edge="start" className="menuButton" color="inherit" aria-label="menu">
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" className="title">
+            <RouterLink to="/">
+              <img src={require('./BG_Ultime.png')} alt="Logo" />
+            </RouterLink>
+          </Typography>
+          <Typography variant="h6">
+            <RouterLink to="/">Accueil</RouterLink>
+          </Typography>
+          <Typography variant="h6">
+            <RouterLink to="/benevoles">Bénévoles</RouterLink>
+          </Typography>
+          <Typography variant="h6">
+            <RouterLink to="/jeux">Jeux</RouterLink>
+          </Typography>
+          <Typography variant="h6">
+            <RouterLink to="/affectations">Affectations</RouterLink>
+          </Typography>
+        </Toolbar>
+      </AppBar>
+    </div>
   );
 };
 
