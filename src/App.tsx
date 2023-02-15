@@ -1,12 +1,13 @@
-import Header from './Header';
 import {
   BrowserRouter as Router,
   Routes, //Routes remplace Switch depuis la version 6 de React Router
   Route
 } from "react-router-dom";
-import HomePage from "./HomePage";
-import Footer from './Footer';
 import './App.css';
+import Header from './Header';
+import Footer from './Footer';
+import HomePage from "./HomePage";
+import BenevoleContenu from './components/BenevoleContenu';
 
 function App() {
   return (
@@ -15,7 +16,9 @@ function App() {
       <div>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        {/* Ajoutez les routes pour les autres pages ici */}
+        <Route path="/benevoles" element={<BenevoleContenu />} />
+        <Route path="/jeux" element={<div>Jeux</div>} />
+        <Route path="/affectations" element={<div>Affectations</div>} />
       </Routes>
       </div>
       <Footer />
