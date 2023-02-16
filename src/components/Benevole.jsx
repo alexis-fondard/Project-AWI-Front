@@ -3,6 +3,8 @@ import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import CancelIcon from '@mui/icons-material/Cancel';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import axios from 'axios'
+import AffectationsBenevole from './AffectationsBenevole';
+import ResponsiveDialog from './ResponsiveDialog';
 const API_URL = "http://localhost:3333/"
 
 function Benevole({id,prenom,nom,email,benevoles,setBenevoles}){
@@ -65,14 +67,13 @@ function Benevole({id,prenom,nom,email,benevoles,setBenevoles}){
         <CancelIcon/>
       </div>
       
-        
-    : <div>{inputPrenom} {inputNom}  {inputEmail} <ModeEditIcon onClick={(e) => handleClick(e)}/><CancelIcon onClick={(e) => handleCrossClick(e)}/></div>
+    :   <div>{inputPrenom} {inputNom}  {inputEmail} <ResponsiveDialog id={id} prenom={prenom} nom={nom}><AffectationsBenevole id={id}></AffectationsBenevole></ResponsiveDialog><ModeEditIcon onClick={(e) => handleClick(e)}/><CancelIcon onClick={(e) => handleCrossClick(e)}/></div>
     }
     
    </li>
   </React.Fragment>
     
-  )
+  );
 }
 
 export default Benevole

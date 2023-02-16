@@ -7,6 +7,7 @@ import {
 import HomePage from "./HomePage";
 import Footer from './Footer';
 import './App.css';
+import BenevoleContenu from './components/BenevoleContenu';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <div>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/benevoles" element={<BenevoleContenu />} />
         {/* Ajoutez les routes pour les autres pages ici */}
       </Routes>
       </div>
