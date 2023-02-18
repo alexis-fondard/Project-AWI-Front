@@ -14,7 +14,6 @@ function AffectationList({id,benevole,benevole_affectations, setBenevoleAffectat
       // Get benevoles DATA
       setBenevoleAffectations(benevole_affectations => response.data); //set pokemon state
       setLoading(false); //set loading state
-      console.log(benevole_affectations)
     });
    });
   }, []);

@@ -11,7 +11,7 @@ import axios from 'axios';
 const API_URL = "http://localhost:3333/"
 
 const columns = [
-  { id: 'zone', label: 'Zone', minWidth: 170 },
+  { id: 'label_zone', label: 'Zone', minWidth: 170 },
   { id: 'debut', label: 'Début', minWidth: 100 },
   { id: 'fin', label: 'Fin', minWidth: 100 },
 ];
@@ -38,7 +38,7 @@ export default function StickyHeadTable({benevole_affectations, setBenevoleAffec
       // Get benevoles DATA
       setBenevoleAffectations(benevole_affectations => response.data); //set pokemon state
       setLoading(false); //set loading state
-      console.log(benevole_affectations)
+      //console.log(response.data)
     });
    });
   }, []);
@@ -51,7 +51,7 @@ export default function StickyHeadTable({benevole_affectations, setBenevoleAffec
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 440 }}>
+      <TableContainer sx={{ maxHeight: 600 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -72,8 +72,23 @@ export default function StickyHeadTable({benevole_affectations, setBenevoleAffec
               .map((affectation) => {
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={affectation.debut +""+ affectation.fin}>
+
                     {columns.map((column) => {
-                      const value = affectation[column.id];
+                      let value = affectation[column.id];
+                      if(column.id === "debut" || column.id === "fin"){
+                        // const s = "1970-01-20T10:56:27.023Z"
+                        // console.log(Date.parse(s))
+                        // const p = "1970-01-20 10:56"
+                        // console.log(Date.parse(p))
+                        let temp = value.substring(0,16)
+                        //console.log(temp)
+                        temp = temp.replace("T", " ")
+                        //console.log(temp)
+                        //USEFULL
+                        //var d = Date.parse(value)
+                        value = value.substring(0,16).replace("T", " ").replaceAll("-","/")
+                      }
+                      
                       return (
                         <TableCell key={column.id} align={column.align}>
                           {column.format && typeof value === 'number'

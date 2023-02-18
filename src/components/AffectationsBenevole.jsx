@@ -1,6 +1,5 @@
 import React,{useState} from 'react'
 import AffectationCreateForm from './AffectationCreateForm';
-import AffectationList from './AffectationList';
 import StickyHeadTable from './StickyHeadTable';
 
 function AffectationsBenevole({id}){
@@ -9,8 +8,8 @@ function AffectationsBenevole({id}){
   
 
   return (<React.Fragment>
-    <AffectationCreateForm/>
-    {/* <AffectationList id={id} benevole_affectations= {benevole_affectations} setBenevoleAffectations= {setBenevoleAffectations}/> */}
+    <div style={{'height':20}}></div>
+    <AffectationCreateForm benevole_affectations = {benevole_affectations} setBenevoleAffectations={setBenevoleAffectations} id={id}/>
     <StickyHeadTable benevole_affectations = {benevole_affectations} setBenevoleAffectations={setBenevoleAffectations} id={id}/>
   </React.Fragment> 
   )

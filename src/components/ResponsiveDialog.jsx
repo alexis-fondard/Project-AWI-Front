@@ -31,6 +31,8 @@ export default function ResponsiveDialog({children,prenom,nom,id}) {
         open={open}
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
+        maxWidth={'xl'}
+        
       >
         <DialogTitle id="responsive-dialog-title">
           {"Affectations du bénévole :" + prenom + " " + nom}
