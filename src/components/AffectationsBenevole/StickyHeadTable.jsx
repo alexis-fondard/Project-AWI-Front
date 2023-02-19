@@ -16,6 +16,10 @@ const columns = [
   { id: 'fin', label: 'Fin', minWidth: 100 },
 ];
 
+String.prototype.replaceAt = function(index, replacement) {
+  return this.substring(0, index) + replacement + this.substring(index + replacement.length);
+}
+
 export default function StickyHeadTable({benevole_affectations, setBenevoleAffectations, id}) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -75,18 +79,25 @@ export default function StickyHeadTable({benevole_affectations, setBenevoleAffec
 
                     {columns.map((column) => {
                       let value = affectation[column.id];
+                      
                       if(column.id === "debut" || column.id === "fin"){
-                        // const s = "1970-01-20T10:56:27.023Z"
-                        // console.log(Date.parse(s))
-                        // const p = "1970-01-20 10:56"
-                        // console.log(Date.parse(p))
-                        let temp = value.substring(0,16)
-                        //console.log(temp)
-                        temp = temp.replace("T", " ")
-                        //console.log(temp)
-                        //USEFULL
-                        //var d = Date.parse(value)
+                        //Formatage parce que la valeur enregistré équivaut à H-1
                         value = value.substring(0,16).replace("T", " ").replaceAll("-","/")
+                        if(value.charAt(11) === '2' && value.charAt(12) === '3'){
+                          value = value.replaceAt(11,'0')
+                          value = value.replaceAt(12,'0')
+                        }else if(value.charAt(12) === '9' ){ 
+                          if(value.charAt(11) === '1'){
+                            value = value.replaceAt(11,'2')
+                          }else{
+                            value = value.replaceAt(11,'1')
+                          }
+                          value = value.replaceAt(12,'0')
+                        }else{
+                          let temp = Number(value.charAt(12))
+                          temp = temp + 1
+                          value = value.replaceAt(12,String(temp))
+                        }
                       }
                       
                       return (

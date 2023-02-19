@@ -27,6 +27,16 @@ const HomePage = () => {
               Créneaux
             </Link>
           </Button>
+          <Button variant="contained" color="primary">
+            <Link href="/affectationsZone" color="inherit">
+              AffectationsZone
+            </Link>
+          </Button>
+          <Button variant="contained" color="primary">
+            <Link href="/affectationsCreneau" color="inherit">
+              AffectationsCreneau
+            </Link>
+          </Button>
         </Box>
       </Container>
     );

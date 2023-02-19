@@ -3,11 +3,13 @@ import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import CancelIcon from '@mui/icons-material/Cancel';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import axios from 'axios'
-import AffectationsBenevole from './AffectationsBenevole';
+import AffectationsBenevole from '../AffectationsBenevole/AffectationsBenevole';
 import ResponsiveDialog from './ResponsiveDialog';
+import TableRow from '@mui/material/TableRow';
+import TableCell from '@mui/material/TableCell';
 const API_URL = "http://localhost:3333/"
 
-function Benevole({id,prenom,nom,email,benevoles,setBenevoles}){
+function Benevole2({id,prenom,nom,email,benevoles,setBenevoles}){
   const [isEditing, setEditing] = useState(false)
   const [inputPrenom, setPrenom] = useState(prenom)
   const [inputNom, setNom] = useState(nom)
@@ -40,37 +42,44 @@ function Benevole({id,prenom,nom,email,benevoles,setBenevoles}){
   }
 
   return (<React.Fragment>
-<li key={id}>
-    {isEditing ? <div>
-        <input
+    <TableRow hover role="checkbox" tabIndex={-1} key={id}>
+    {isEditing ? <React.Fragment>
+      <TableCell key={"nom"}><input
             type="text"
             placeholder="Prenom"
             value={inputPrenom}
             onChange={(event) => setPrenom(event.target.value)}
-        />
-        <input
+        /></TableCell>
+      <TableCell key={"prenom"}><input
             type="text"
             placeholder="Nom"
             value={inputNom}
             onChange={(event) => setNom(event.target.value)}
-        />
-        <input
+        /></TableCell>
+      <TableCell key={"email"}><input
             type="text"
             placeholder="Email"
             value={inputEmail}
             onChange={(event) => setEmail(event.target.value)}
-        />
-        <CheckCircleOutlineIcon onClick={(e) => handleClick(e)}/>
-        <CancelIcon/>
-      </div>
+        /></TableCell> 
+        
+        <TableCell key={"popup"}><CheckCircleOutlineIcon onClick={(e) => handleClick(e)}/>
+        <CancelIcon/></TableCell>
+        
+      </React.Fragment>
       
-    :   <div>{inputPrenom} {inputNom}  {inputEmail} <ResponsiveDialog id={id} prenom={prenom} nom={nom}><AffectationsBenevole id={id}></AffectationsBenevole></ResponsiveDialog><ModeEditIcon onClick={(e) => handleClick(e)}/><CancelIcon onClick={(e) => handleCrossClick(e)}/></div>
+    : <React.Fragment>
+      <TableCell key={"nom"}>{nom}</TableCell>
+      <TableCell key={"prenom"}>{prenom}</TableCell>
+      <TableCell key={"email"}>{email}</TableCell> 
+      <TableCell key={"popup"}><ResponsiveDialog id={id} prenom={prenom} nom={nom}><AffectationsBenevole id={id}></AffectationsBenevole></ResponsiveDialog><ModeEditIcon onClick={(e) => handleClick(e)}/><CancelIcon onClick={(e) => handleCrossClick(e)}/></TableCell>
+      </React.Fragment> 
+
     }
-    
-   </li>
+    </TableRow>
   </React.Fragment>
     
   );
 }
 
-export default Benevole
+export default Benevole2

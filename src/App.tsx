@@ -7,7 +7,9 @@ import './App.css';
 import Header from './Header';
 import Footer from './Footer';
 import HomePage from "./HomePage";
-import BenevoleContenu from './components/BenevoleContenu';
+import BenevoleContenu from './components/Benevoles/BenevoleContenu';
+import AffectationZoneContenu from "./components/AffectationsZones/AffectationZoneContenu";
+import AffectationCreneauContenu from "./components/AffectationsCreneau/AffectationsCreneauContenu";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="/benevoles" element={<BenevoleContenu />} />
         <Route path="/jeux" element={<div>Jeux</div>} />
         <Route path="/affectations" element={<div>Affectations</div>} />
+        <Route path="/affectationsZone" element={<AffectationZoneContenu/>} />
+        <Route path="/affectationsCreneau" element={<AffectationCreneauContenu/>} />
       </Routes>
       </div>
       <Footer />

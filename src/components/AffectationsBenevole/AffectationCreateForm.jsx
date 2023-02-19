@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import dayjs from 'dayjs';
-import axios from 'axios'
+import axios from 'axios';
 import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -10,7 +10,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-import '../style/AffectationBenevoleCreateForm.css';
+import '../../style/AffectationBenevoleCreateForm.css';
 
 const API_URL = "http://localhost:3333/"
 
@@ -67,13 +67,13 @@ function AffectationCreateForm({id,benevole_affectations, setBenevoleAffectation
 
   function transformDate(day1,month1,year1,hours1,mins1){
     const d = (day1 < 10 ? "0"+day1 : day1)
-    const m = (month1 < 10 ? "0"+month1 : month1)
+    const m = (month1 < 10 ? "0"+Number(Number(month1)+1) : Number(month1)+1)
     const y = year1
-    const h = hours1
+    const h = (hours1.startsWith("0") ? Number(hours1) : Number(hours1))
     const mi = mins1
   
     //const s = "1970-01-20 00:56"
-    console.log(Date.parse("1970-01-20 00:56"))
+    console.log(y + "-" + m + "-" + d + " " + h + ":" + mi)
     return y + "-" + m + "-" + d + " " + h + ":" + mi
   }
 
