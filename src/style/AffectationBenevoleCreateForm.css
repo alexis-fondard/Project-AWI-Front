@@ -1,0 +1,8 @@
+.flexbox-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.date-picker{
+  max-width: 10;
+}
