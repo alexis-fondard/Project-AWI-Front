@@ -17,7 +17,7 @@ import AffectationZoneContenu from "./components/AffectationsZones/AffectationZo
 import AffectationCreneauContenu from "./components/AffectationsCreneau/AffectationsCreneauContenu";
 
 const defaultProtectedRouteProps: Omit<PrivateRouteProps, 'outlet'> = {
-  isAuthenticated: useContext(AuthContext).isAuthenticated,
+  isAuthenticated: true,
   authenticationPath: "/login",
 };
 
