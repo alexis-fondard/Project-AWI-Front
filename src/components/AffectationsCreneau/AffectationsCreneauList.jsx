@@ -52,7 +52,7 @@ function AffectationsCreneauList({affectations, setAffectations}){
   }
 
   return (
-    <Paper sx={{ width: '70%', overflow: 'hidden' }} style={{'margin':'auto'}}>
+    <Paper sx={{ overflow: 'hidden' }}>
       <TableContainer sx={{ maxHeight: 600 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>

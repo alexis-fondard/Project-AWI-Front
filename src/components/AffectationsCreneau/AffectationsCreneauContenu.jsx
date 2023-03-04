@@ -6,8 +6,10 @@ function AffectationCreneauContenu(){
   const [affectations, setAffectations] = useState([])
 
   return (<React.Fragment>
-    <AffectationsCreneauInput affectations={affectations} setAffectations={setAffectations}/>
-    <AffectationsCreneauList affectations={affectations} setAffectations={setAffectations}/>
+    <div className={'contenu'}>
+      <AffectationsCreneauInput affectations={affectations} setAffectations={setAffectations}/>
+      <AffectationsCreneauList affectations={affectations} setAffectations={setAffectations}/>
+    </div>
   </React.Fragment>)
 }
 

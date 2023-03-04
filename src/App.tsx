@@ -4,6 +4,7 @@ import {
   Route
 } from "react-router-dom";
 import './App.css';
+import './style/CommonToEveryWindow.css'
 import Header from './Header';
 import Footer from './Footer';
 import HomePage from "./HomePage";
@@ -15,6 +16,7 @@ import { AuthContext } from "./auth/AuthContext";
 import { useContext } from "react";
 import AffectationZoneContenu from "./components/AffectationsZones/AffectationZoneContenu";
 import AffectationCreneauContenu from "./components/AffectationsCreneau/AffectationsCreneauContenu";
+import Background from "./components/Background";
 
 const defaultProtectedRouteProps: Omit<PrivateRouteProps, 'outlet'> = {
   isAuthenticated: true,
@@ -25,6 +27,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <Background/>
       <div>
         <Routes>
           <Route path="/" element={<HomePage />} />

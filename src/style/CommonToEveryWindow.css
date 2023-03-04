@@ -1,0 +1,28 @@
+.background {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 500px 0 0;
+  position: absolute; 
+  overflow: hidden;
+  background: url('../assets/BANNER.png');
+  background-repeat: repeat;
+  animation: background_anim 25s linear infinite;
+  opacity: 100%;
+  resize: none;
+  z-index: -100;
+
+}
+
+@keyframes background_anim{
+  0%{background-position: 0 0;}
+  100%{background-position: -1784px 0;}
+
+}
+
+.contenu {
+  background-color: white;
+  width: max-content;
+  margin:auto;
+  padding: 20px;
+}

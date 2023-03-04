@@ -6,8 +6,10 @@ function AffectationZoneContenu(){
   const [affectations, setAffectations] = useState([])
 
   return (<React.Fragment>
-    <AffectationZoneInput affectations={affectations} setAffectations={setAffectations}/>
-    <AffectationZoneList affectations={affectations} setAffectations={setAffectations}/>
+    <div className={'contenu'}>
+      <AffectationZoneInput affectations={affectations} setAffectations={setAffectations}/>
+      <AffectationZoneList affectations={affectations} setAffectations={setAffectations}/>
+    </div>
   </React.Fragment>)
 }
 

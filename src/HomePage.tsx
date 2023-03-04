@@ -3,9 +3,9 @@ import { Container, Typography, Box, Button, Link } from "@mui/material";
 const HomePage = () => {
     return (
       <Container maxWidth="sm">
-        <Box my={4}>
+        <Box my={6}>
           <Typography variant="h4" component="h1" gutterBottom>
-            Festival du jeu
+            Festiland
           </Typography>
           <Button variant="contained" color="primary">
             <Link href="/jeux" color="inherit">
@@ -23,18 +23,13 @@ const HomePage = () => {
             </Link>
           </Button>
           <Button variant="contained" color="primary">
-            <Link href="/creneaux" color="inherit">
-              Créneaux
-            </Link>
-          </Button>
-          <Button variant="contained" color="primary">
             <Link href="/affectationsZone" color="inherit">
-              AffectationsZone
+              Affectations à une zone
             </Link>
           </Button>
           <Button variant="contained" color="primary">
             <Link href="/affectationsCreneau" color="inherit">
-              AffectationsCreneau
+              Affectations à partir d'un créneau
             </Link>
           </Button>
         </Box>

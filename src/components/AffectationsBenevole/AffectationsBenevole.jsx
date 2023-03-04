@@ -8,9 +8,10 @@ function AffectationsBenevole({id}){
   
 
   return (<React.Fragment>
-    <div style={{'height':20}}></div>
-    <AffectationCreateForm benevole_affectations = {benevole_affectations} setBenevoleAffectations={setBenevoleAffectations} id={id}/>
-    <StickyHeadTable benevole_affectations = {benevole_affectations} setBenevoleAffectations={setBenevoleAffectations} id={id}/>
+    <div className={'contenu'}>
+      <AffectationCreateForm benevole_affectations = {benevole_affectations} setBenevoleAffectations={setBenevoleAffectations} id={id}/>
+      <StickyHeadTable benevole_affectations = {benevole_affectations} setBenevoleAffectations={setBenevoleAffectations} id={id}/>
+    </div>
   </React.Fragment> 
   )
 }
