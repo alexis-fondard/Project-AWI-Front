@@ -30,9 +30,19 @@ function AffectationZoneInput({affectations, setAffectations}){
 
     useEffect(() => {
       if(selectedZone !== 'Aucun'){
-        axios.get(API_URL + "benevoles_zones/" + selectedZone).then((response) => {setAffectations(affectations => response.data)}).then((error) => {console.log(error)})
+        axios.get(API_URL + "benevoles_zones/" + selectedZone)
+        .then((response) => {
+          setAffectations(affectations => response.data)
+          affectations.sort(function(a,b){ return (new Date(a.debut) < new Date(b.debut) ? 1 : -1)})
+          affectations.sort(function(a,b){ return (a.zone.label > b.zone.label ? 1 : -1)})
+        }).then((error) => {console.log(error)})
       }else{
-        axios.get(API_URL + "benevoles_zones/").then((response) => {setAffectations(affectations => response.data)}).then((error) => {console.log(error)})
+        axios.get(API_URL + "benevoles_zones/")
+        .then((response) => {
+          setAffectations(affectations => response.data);
+          affectations.sort(function(a,b){ return (new Date(a.debut) < new Date(b.debut) ? 1 : -1)})
+          affectations.sort(function(a,b){ return (a.zone.label > b.zone.label ? 1 : -1)})
+        }).then((error) => {console.log(error)})
       }
     }, [selectedZone])
 

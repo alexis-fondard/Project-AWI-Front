@@ -86,6 +86,7 @@ function AffectationsCreneauInput({affectations, setAffectations}){
         await axios.get(API_URL+"benevoles_zones/"+Date.parse(transformDate(inputDebut.$D, inputDebut.$M, inputDebut.$y,inputHours,inputMinutes))+"&"+Date.parse(transformDate(inputDebut.$D, inputDebut.$M, inputDebut.$y,inputHours2,inputMinutes2)), {})
         .then((response) => {
           setAffectations(affectations => response.data)
+          affectations.sort(function(a,b){return a.label > b.label ? 1 : -1})
         });
     } catch (error) {
         console.error(error); //TODO: Refaire 
@@ -96,7 +97,7 @@ function AffectationsCreneauInput({affectations, setAffectations}){
   return (<React.Fragment>
     <div style={{'margin-top':10,'margin-left':'auto', 'margin-right':'auto'}}>
     <form id="form1" onSubmit={(e) => handleCreate(e)}>
-      <div style={{'margin-top':'auto','margin-bottom':'auto','margin-bottom':10}}>Horaires de fin </div>
+      <div style={{'margin-top':'auto','margin-bottom':'auto','margin-bottom':10}}>Horaires de debut </div>
       <LocalizationProvider dateAdapter={AdapterDayjs} fullWidth='fullWidth'>
           <DesktopDatePicker
                 label=""

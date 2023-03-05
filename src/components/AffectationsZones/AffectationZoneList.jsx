@@ -8,12 +8,14 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import axios from 'axios';
+import CancelIcon from '@mui/icons-material/Cancel';
 const API_URL = "http://localhost:3333/"
 
 
 const columns = [
   { id: 'nom', label: 'Nom', minWidth: 170 },
   { id: 'prenom', label: 'Prenom', minWidth: 100 },
+  { id: 'zone', label: 'Zone', minWidth: 100},
   { id: 'debut', label: 'Debut', minWidth: 100 },
   { id: 'fin', label: 'Fin', minWidth: 100 },
 ];
@@ -41,10 +43,42 @@ function AffectationZoneList({affectations, setAffectations}){
       // Get benevoles DATA
       setAffectations(affectations => response.data);
       setLoading(false); //set loading state
-      //console.log(response.data)
+      affectations.sort(function(a,b){ return new Date(a.debut) < new Date(b.debut) ? 1 : -1})
+      affectations.sort(function(a,b){ return a.zone.label > b.zone.label ? 1 : -1})
     });
    });
   }, []);
+
+
+  function handleCrossClick(id,label,debut,fin,e){
+    e.preventDefault()
+    let deb = new Date(debut)
+    let f = new Date(fin)
+    deb = Date.parse(deb)
+    f = Date.parse(f)
+  
+    axios.delete(API_URL+'benevoles_zones/delete',{data:{
+      benevole: {
+        id: id,
+        prenom : 'temp',
+        nom: 'temp',
+        email: 'temp'
+      },
+      zone: {
+        label: label,
+      },
+      date_debut: deb,
+      date_fin: f,
+    }
+    }).then(response => {
+      console.log(affectations[0].debut)
+      console.log(debut)
+      let filteredArray = affectations.filter(item => (item.debut !== debut && item.zone.label !== label))
+      console.log(filteredArray)
+      setAffectations(affectations => filteredArray)
+    }).then(error => {console.log(error)})
+    
+  }
 
   if (isLoading) {
     return (
@@ -77,8 +111,10 @@ function AffectationZoneList({affectations, setAffectations}){
                   <TableRow hover role="checkbox" tabIndex={-1} key={affectation.debut +""+ affectation.fin}>
                     <TableCell>{affectation.benevole.nom}</TableCell>
                     <TableCell>{affectation.benevole.prenom}</TableCell>
+                    <TableCell>{affectation.zone.label}</TableCell>
                     <TableCell>{affectation.debut.substring(0,16).replace("T", " ").replaceAll("-","/")}</TableCell>
                     <TableCell>{affectation.fin.substring(0,16).replace("T", " ").replaceAll("-","/")}</TableCell>
+                    <TableCell><CancelIcon onClick={(e) => handleCrossClick(affectation.benevole.id,affectation.zone.label,affectation.debut,affectation.fin, e)}/></TableCell>
                   </TableRow>
                 );
               })}

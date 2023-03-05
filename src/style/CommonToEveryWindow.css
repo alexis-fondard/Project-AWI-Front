@@ -57,6 +57,20 @@
   padding-left:20px
 }
 
+
+.navbar{
+  display: flex;
+
+}
+
+.navbar > * > a {
+  text-decoration: none;
+  color:white;
+  text-shadow: 2px 2px black;
+  margin:10px;
+}
+
+
 .homepage_box {
   width: max-content;
   display:flex;
