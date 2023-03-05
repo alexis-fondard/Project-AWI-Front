@@ -7,6 +7,7 @@
   overflow: hidden;
   background: url('../assets/BANNER.png');
   background-repeat: repeat;
+  opacity: 100%;
   animation: background_anim 25s linear infinite;
   opacity: 100%;
   resize: none;
@@ -44,6 +45,18 @@
   transition: transform 1s;
 }
 
+.background_homepage{
+ 
+  width: max-content;
+  margin:auto;
+  margin-top:5px;
+  border: 2px black solid;
+  background-color: white;
+  padding-bottom: 120px;
+  padding-right:20px;
+  padding-left:20px
+}
+
 .homepage_box {
   width: max-content;
   display:flex;
@@ -51,7 +64,6 @@
 }
 
 .homepage_box a:nth-child(2n + 1){
-  /* background-color: lime; */
   transform: translateY(100px)
 }
 

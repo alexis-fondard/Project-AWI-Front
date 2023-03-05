@@ -1,12 +1,12 @@
 import '../../style/CommonToEveryWindow.css'
 
-export default function LoginImage({src,alt,name}){
+export default function HomePageIcon({src,alt,name}){
 
 
   return(
     <div className={'homepage_logo'}>
       <img src={src} alt={name}/>
-      <h2>{name}</h2>
+      <h2 style={{"maxWidth":"10ch", "padding": "0px", "margin":"0px"}}>{name}</h2>
     </div>
   )
 }
