@@ -20,9 +20,40 @@
 
 }
 
+.footer{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background: #6cf;
+}
+
 .contenu {
   background-color: white;
   width: max-content;
   margin:auto;
   padding: 20px;
 }
+
+.homepage_logo{
+  width: max-content;
+  margin:auto;
+}
+
+.homepage_logo:hover {
+  transform: translate(0px, 10px);
+  transition: transform 1s;
+}
+
+.homepage_box {
+  width: max-content;
+  display:flex;
+  margin:auto;
+}
+
+.homepage_box a:nth-child(2n + 1){
+  /* background-color: lime; */
+  transform: translateY(100px)
+}
+
+
+
