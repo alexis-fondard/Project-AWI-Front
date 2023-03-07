@@ -23,7 +23,7 @@ import JeuContenu from "./components/Jeux/JeuContenu";
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
   const defaultProtectedRouteProps: Omit<PrivateRouteProps, 'outlet'> = {
-    isAuthenticated: isAuthenticated,
+    isAuthenticated: true, //à changer en isAuthenticated, problème avec la bd
     authenticationPath: "/login",
   };
   
@@ -38,8 +38,8 @@ function App() {
           <Route path="/benevoles" element={<PrivateRoute {...defaultProtectedRouteProps} outlet={<BenevoleContenu />} /> } />
           <Route path="/jeux" element={<PrivateRoute {...defaultProtectedRouteProps} outlet={<JeuContenu/>} /> } />
           <Route path="/affectations" element={<PrivateRoute {...defaultProtectedRouteProps} outlet={<div>Affectations</div>} /> } />
-          <Route path="/affectationsZone" element={<AffectationZoneContenu/>}/>
-          <Route path="/affectationsCreneau" element={<AffectationCreneauContenu/>}/>
+          <Route path="/affectationsZone" element={<PrivateRoute {...defaultProtectedRouteProps} outlet={<AffectationZoneContenu/>} />}/>
+          <Route path="/affectationsCreneau" element={<PrivateRoute {...defaultProtectedRouteProps} outlet={<AffectationCreneauContenu/>} />}/>
         </Routes>
       </div>
       <Footer />

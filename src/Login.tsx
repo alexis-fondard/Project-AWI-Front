@@ -2,8 +2,9 @@ import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from './auth/AuthContext';
-// import jwt from 'jsonwebtoken';
-// import jwt_decode from 'jwt-decode';
+import Button from '@mui/material/Button';
+import { TextField } from '@mui/material';
+import './style/CommonToEveryWindow.css';
 
 const Login: React.FC = () => {
   const [nom, setNom] = useState('');
@@ -35,33 +36,42 @@ const Login: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleLogin}>
-        <input
-            type="text"
-            placeholder="Nom"
-            value={nom}
-            onChange={(event) => setNom(event.target.value)}
-        />
-        <input
-            type="text"
-            placeholder="Prénom"
-            value={prenom}
-            onChange={(event) => setPrenom(event.target.value)}
-        />
-        <input
-            type="text"
-            placeholder="Mail"
-            value={mail}
-            onChange={(event) => setMail(event.target.value)}
-        />
-        <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-        />
-        <button type="submit">Login</button>
-    </form>
+    <React.Fragment>
+    <div className='contenu'>
+        <h1>Veuillez vous connecter :</h1>
+        <form onSubmit={handleLogin}>
+            <TextField
+                type="text"
+                placeholder="Nom"
+                value={nom}
+                variant="outlined"
+                onChange={(event) => setNom(event.target.value)}
+            />
+            <TextField
+                type="text"
+                placeholder="Prénom"
+                value={prenom}
+                variant="outlined"
+                onChange={(event) => setPrenom(event.target.value)}
+            />
+            <TextField
+                type="text"
+                placeholder="Mail"
+                value={mail}
+                variant="outlined"
+                onChange={(event) => setMail(event.target.value)}
+            />
+            <TextField
+                type="password"
+                placeholder="Password"
+                value={password}
+                variant="outlined"
+                onChange={(event) => setPassword(event.target.value)}
+            />
+            <Button type="submit" variant="contained" size="large" style={{'verticalAlign':'baseline','marginLeft':'10px','marginRight':'10px', 'marginTop':'0.5%'}} color='secondary'>Login</Button>
+        </form>
+    </div>
+    </React.Fragment>
   );
 };
 
