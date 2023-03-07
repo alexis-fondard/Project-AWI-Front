@@ -17,13 +17,19 @@ import { useContext } from "react";
 import AffectationZoneContenu from "./components/AffectationsZones/AffectationZoneContenu";
 import AffectationCreneauContenu from "./components/AffectationsCreneau/AffectationsCreneauContenu";
 import Background from "./components/Background";
+import JeuContenu from "./components/Jeux/JeuContenu";
 
-const defaultProtectedRouteProps: Omit<PrivateRouteProps, 'outlet'> = {
-  isAuthenticated: true,
-  authenticationPath: "/login",
-};
+// const defaultProtectedRouteProps: Omit<PrivateRouteProps, 'outlet'> = {
+//   isAuthenticated: true,
+//   authenticationPath: "/login",
+// };
 
 function App() {
+  const defaultProtectedRouteProps: Omit<PrivateRouteProps, 'outlet'> = {
+    isAuthenticated: true,
+    authenticationPath: "/login",
+  };
+
   return (
     <div className="App">
       <Header />
@@ -33,7 +39,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/benevoles" element={<PrivateRoute {...defaultProtectedRouteProps} outlet={<BenevoleContenu />} /> } />
-          <Route path="/jeux" element={<PrivateRoute {...defaultProtectedRouteProps} outlet={<div>Jeux</div>} /> } />
+          <Route path="/jeux" element={<PrivateRoute {...defaultProtectedRouteProps} outlet={<JeuContenu/>} /> } />
           <Route path="/affectations" element={<PrivateRoute {...defaultProtectedRouteProps} outlet={<div>Affectations</div>} /> } />
           <Route path="/affectationsZone" element={<AffectationZoneContenu/>}/>
           <Route path="/affectationsCreneau" element={<AffectationCreneauContenu/>}/>
