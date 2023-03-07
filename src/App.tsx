@@ -19,17 +19,14 @@ import AffectationCreneauContenu from "./components/AffectationsCreneau/Affectat
 import Background from "./components/Background";
 import JeuContenu from "./components/Jeux/JeuContenu";
 
-// const defaultProtectedRouteProps: Omit<PrivateRouteProps, 'outlet'> = {
-//   isAuthenticated: true,
-//   authenticationPath: "/login",
-// };
 
 function App() {
+  const { isAuthenticated } = useContext(AuthContext);
   const defaultProtectedRouteProps: Omit<PrivateRouteProps, 'outlet'> = {
-    isAuthenticated: true,
+    isAuthenticated: isAuthenticated,
     authenticationPath: "/login",
   };
-
+  
   return (
     <div className="App">
       <Header />

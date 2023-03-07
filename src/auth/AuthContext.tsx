@@ -15,6 +15,7 @@ export const AuthContext = createContext<AuthContextValue>({
 type Props = {
     children?: React.ReactNode
 };
+
 export const AuthProvider: React.FC<Props> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 
