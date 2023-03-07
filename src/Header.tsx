@@ -36,6 +36,9 @@ const Header = () => {
           <Typography variant="h6">
             <RouterLink to="/jeux" id='jeux'>Jeux</RouterLink>
           </Typography>
+          {/* <Typography variant="h6">
+            <RouterLink to="/zones" id='zones'>Zones</RouterLink>
+          </Typography> */} {/* OPTIONNEL car pas demandé: à décommenter une fois réalisé */}
           <Typography variant="h6">
             <RouterLink to="/benevoles" id='benevoles'>Bénévoles</RouterLink>
           </Typography>

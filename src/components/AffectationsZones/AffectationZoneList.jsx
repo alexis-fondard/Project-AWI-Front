@@ -37,8 +37,8 @@ function AffectationZoneList({affectations, setAffectations}){
   const [isLoading, setLoading] = useState(true); // Loading state
   
   useEffect(() => { // useEffect hook
-  setTimeout(() => { // simulate a delay
-  axios.get(API_URL +"benevoles_zones/")
+  setTimeout(() => { 
+  axios.get(API_URL +"benevoles_zones")
   .then((response) => {
       // Get benevoles DATA
       setAffectations(affectations => response.data);
@@ -52,6 +52,12 @@ function AffectationZoneList({affectations, setAffectations}){
   }, []);
 
 
+  function addDays(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+  }
+
   function formatDate(date){
     let formatedDate = date;
         
@@ -60,6 +66,11 @@ function AffectationZoneList({affectations, setAffectations}){
     if(formatedDate.charAt(11) === '2' && formatedDate.charAt(12) === '3'){
       formatedDate = formatedDate.replaceAt(11,'0')
       formatedDate = formatedDate.replaceAt(12,'0')
+      if(formatedDate.charAt(9) === '9'){
+        formatedDate = formatedDate.replaceAt(8,String(Number(formatedDate.charAt(8))+1))
+      }
+      formatedDate = formatedDate.replaceAt(9,String(Number(formatedDate.charAt(9))+1))
+      
     }else if(formatedDate.charAt(12) === '9' ){ 
       if(formatedDate.charAt(11) === '1'){
         formatedDate = formatedDate.replaceAt(11,'2')
@@ -75,6 +86,35 @@ function AffectationZoneList({affectations, setAffectations}){
     return formatedDate
   }
 
+  /*NOT USED ANYMORE */
+  // function reverseFormatDate(date){
+  //   console.log(date)
+  //   let formatedDate = String(date);
+  //   //Formatage parce que la valeur enregistré équivaut à H+1
+  //   if(formatedDate.charAt(11) === '0' && formatedDate.charAt(12) === '0'){
+  //     formatedDate = formatedDate.replaceAt(11,'2')
+  //     formatedDate = formatedDate.replaceAt(12,'3')
+  //     if(formatedDate.charAt(9) === '0' && formatedDate.charAt(8) !== '0'){
+  //       formatedDate = formatedDate.replaceAt(8,String(Number(formatedDate.charAt(8))-1))
+  //     }
+  //     formatedDate = formatedDate.replaceAt(9,'9')
+  //   }else if(formatedDate.charAt(12) === '0' ){ 
+  //     if(formatedDate.charAt(11) === '1'){
+  //       formatedDate = formatedDate.replaceAt(11,'0')
+  //     }else{
+  //       formatedDate = formatedDate.replaceAt(11,'1')
+  //     }
+  //     formatedDate = formatedDate.replaceAt(12,'9')
+  //   }else{
+  //     let temp = Number(formatedDate.charAt(12))
+  //     temp = temp - 1
+  //     formatedDate = formatedDate.replaceAt(12,String(temp))
+  //   }
+  //   console.log(formatedDate)
+  //   return formatedDate
+  // }
+
+
   function handleCrossClick(id,label,debut,fin,e){
     e.preventDefault()
     let deb = new Date(debut)
@@ -82,7 +122,7 @@ function AffectationZoneList({affectations, setAffectations}){
     deb = Date.parse(deb)
     f = Date.parse(f)
   
-    axios.delete(API_URL+'benevoles_zones/delete',{data:{
+    axios.delete(API_URL+'benevoles_zones/',{data:{
       benevole: {
         id: id,
         prenom : 'temp',
@@ -139,7 +179,7 @@ function AffectationZoneList({affectations, setAffectations}){
                     <TableCell>{affectation.zone.label}</TableCell>
                     <TableCell>{formatDate(affectation.debut)}</TableCell>
                     <TableCell>{formatDate(affectation.fin)}</TableCell>
-                    <TableCell><CancelIcon onClick={(e) => handleCrossClick(affectation.benevole.id,affectation.zone.label,affectation.debut,affectation.fin, e)}/></TableCell>
+                    <TableCell><CancelIcon onClick={(e) => handleCrossClick(affectation.benevole.id,affectation.zone.label,formatDate(affectation.debut),formatDate(affectation.fin), e)}/></TableCell>
                   </TableRow>
                 );
               })}

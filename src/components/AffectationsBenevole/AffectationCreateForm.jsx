@@ -103,7 +103,7 @@ function AffectationCreateForm({id,benevole_affectations, setBenevoleAffectation
     e.preventDefault()
     
     try {
-        await axios.post(API_URL+"benevoles_zones/create", { 
+        await axios.post(API_URL+"benevoles_zones", { 
             benevole: {
               id: id
             },

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import CancelIcon from '@mui/icons-material/Cancel';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
@@ -15,10 +15,17 @@ function Benevole2({id,prenom,nom,email,benevoles,setBenevoles}){
   const [inputNom, setNom] = useState(nom)
   const [inputEmail, setEmail] = useState(email)
 
+
+  useEffect(() => {
+    setPrenom(prenom)
+    setNom(nom)
+    setEmail(email)
+  },[])
+
   function handleClick(e){
     if(isEditing){
       try{
-        axios.put(API_URL+'benevoles/'+id+'/update',{
+        axios.put(API_URL+'benevoles/'+id,{
           prenom: inputPrenom,
           nom: inputNom,
           email: inputEmail
@@ -33,7 +40,7 @@ function Benevole2({id,prenom,nom,email,benevoles,setBenevoles}){
   }
 
   function handleCrossClick(e){
-    axios.delete(API_URL+'benevoles/'+id+'/delete',{
+    axios.delete(API_URL+'benevoles/'+id,{
     }).then(response => {
       let filteredArray = benevoles.filter(item => item.id !== id)
       setBenevoles(benevoles => filteredArray)
@@ -63,16 +70,16 @@ function Benevole2({id,prenom,nom,email,benevoles,setBenevoles}){
             onChange={(event) => setEmail(event.target.value)}
         /></TableCell> 
         
-        <TableCell key={"popup"}><CheckCircleOutlineIcon onClick={(e) => handleClick(e)} className={'iconArrow'}/>
+        <TableCell key={"popup"}><CheckCircleOutlineIcon onClick={(e) => handleClick(e)} />
         <CancelIcon/></TableCell>
         
       </React.Fragment>
       
     : <React.Fragment>
-      <TableCell key={"nom"}>{nom}</TableCell>
-      <TableCell key={"prenom"}>{prenom}</TableCell>
-      <TableCell key={"email"}>{email}</TableCell> 
-      <TableCell key={"popup"}><ResponsiveDialog id={id} prenom={prenom} nom={nom} ><AffectationsBenevole id={id}></AffectationsBenevole></ResponsiveDialog><ModeEditIcon onClick={(e) => handleClick(e)} className={'iconArrow'}/><CancelIcon onClick={(e) => handleCrossClick(e)} className={'iconArrow'}/></TableCell>
+      <TableCell key={"nom"}>{inputNom}</TableCell>
+      <TableCell key={"prenom"}>{inputPrenom}</TableCell>
+      <TableCell key={"email"}>{inputEmail}</TableCell> 
+      <TableCell key={"popup"}><ResponsiveDialog id={id} prenom={inputPrenom} nom={inputNom} ><AffectationsBenevole id={id}></AffectationsBenevole></ResponsiveDialog><ModeEditIcon onClick={(e) => handleClick(e)} className={'iconArrow'}/><CancelIcon onClick={(e) => handleCrossClick(e)} className={'iconArrow'}/></TableCell>
       </React.Fragment> 
 
     }

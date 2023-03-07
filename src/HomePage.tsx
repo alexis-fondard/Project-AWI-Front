@@ -21,10 +21,10 @@ const HomePage = () => {
           <Link underline="none" href="/jeux" color="inherit">
             <HomePageIcon src={require('./assets/Downgrade_VER/JEUX.png')} name="Jeux" alt="Icone de la section Jeux"/>
           </Link>
-          <Link underline="none" href="/benevoles" color="inherit">
+          {/* <Link underline="none" href="/zones" color="inherit">
             <HomePageIcon src={require('./assets/Downgrade_VER/ZONES.png')} name="Zones" alt="Icone de la section Zones"/>
-          </Link>
-          <Link underline="none" href="/zones" color="inherit">
+          </Link> */} {/* OPTIONNEL car pas demandé: PAS EU LE TEMPS D'IMPLEMENTER, à décommenter une fois fait */}
+          <Link underline="none" href="/benevoles" color="inherit">
             <HomePageIcon src={require('./assets/Downgrade_VER/BENEVOLES.png')} name="Benevoles" alt="Icone de la section Benevoles"/>
           </Link>
           <Link underline="none" href="/affectationsZone" color="inherit">

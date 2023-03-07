@@ -35,6 +35,7 @@ function App() {
           <Route path="/benevoles" element={<PrivateRoute {...defaultProtectedRouteProps} outlet={<BenevoleContenu />} /> } />
           <Route path="/jeux" element={<PrivateRoute {...defaultProtectedRouteProps} outlet={<div>Jeux</div>} /> } />
           <Route path="/affectations" element={<PrivateRoute {...defaultProtectedRouteProps} outlet={<div>Affectations</div>} /> } />
+          {/* <Route path="/zones" element={<ZoneContenu/>}/> */} {/* OPTIONNEL car pas demandé: PAS EU LE TEMPS D'IMPLEMENTER MAIS LOGO DEJA PRESENT */}
           <Route path="/affectationsZone" element={<AffectationZoneContenu/>}/>
           <Route path="/affectationsCreneau" element={<AffectationCreneauContenu/>}/>
         </Routes>

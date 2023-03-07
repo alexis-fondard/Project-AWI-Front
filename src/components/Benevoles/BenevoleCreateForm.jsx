@@ -18,7 +18,7 @@ function BenevoleCreateForm({benevoles, setBenevoles}) {
       return 
     }
     try {
-        await axios.post(API_URL+"benevoles/create", { 
+        await axios.post(API_URL+"benevoles", { 
             prenom: inputPrenom.trim(),
             nom: inputNom.trim(),
             email: inputEmail.trim()

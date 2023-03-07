@@ -61,6 +61,11 @@ function AffectationsCreneauList({affectations, setAffectations}){
     if(formatedDate.charAt(11) === '2' && formatedDate.charAt(12) === '3'){
       formatedDate = formatedDate.replaceAt(11,'0')
       formatedDate = formatedDate.replaceAt(12,'0')
+      if(formatedDate.charAt(9) === '9'){
+        formatedDate = formatedDate.replaceAt(8,String(Number(formatedDate.charAt(8))+1))
+      }
+      formatedDate = formatedDate.replaceAt(9,String(Number(formatedDate.charAt(9))+1))
+      
     }else if(formatedDate.charAt(12) === '9' ){ 
       if(formatedDate.charAt(11) === '1'){
         formatedDate = formatedDate.replaceAt(11,'2')
@@ -85,7 +90,7 @@ function AffectationsCreneauList({affectations, setAffectations}){
     deb = Date.parse(deb)
     f = Date.parse(f)
   
-    axios.delete(API_URL+'benevoles_zones/delete',{data:{
+    axios.delete(API_URL+'benevoles_zones/',{data:{
       benevole: {
         id: id,
         prenom : 'temp',
