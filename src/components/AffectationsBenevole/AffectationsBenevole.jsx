@@ -8,7 +8,7 @@ function AffectationsBenevole({id}){
   
 
   return (<React.Fragment>
-    <div className={'contenu'}>
+    <div className={'contenu'} style={{'paddingTop':'20px'}}>
       <AffectationCreateForm benevole_affectations = {benevole_affectations} setBenevoleAffectations={setBenevoleAffectations} id={id}/>
       <StickyHeadTable benevole_affectations = {benevole_affectations} setBenevoleAffectations={setBenevoleAffectations} id={id}/>
     </div>

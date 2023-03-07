@@ -51,6 +51,7 @@ function AffectationZoneInput({affectations, setAffectations}){
   }
 
   return (<React.Fragment>
+    <h1>Veuillez choisir une zone</h1>
     <FormControl style={{'magin':'auto', 'margin-top':8}}>
       <InputLabel id="input-zone">Zones</InputLabel>
         <Select

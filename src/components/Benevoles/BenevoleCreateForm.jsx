@@ -13,15 +13,16 @@ function BenevoleCreateForm({benevoles, setBenevoles}) {
 
   const handleCreate = async (e) => {
     e.preventDefault()
+    if(inputPrenom.trim() === "" || inputNom.trim() === "" || inputEmail.trim() === ""){
+      alert('Vous devez remplir tous les champs avant de créer un bénévole')
+      return 
+    }
     try {
         await axios.post(API_URL+"benevoles/create", { 
-            prenom: inputPrenom,
-            nom: inputNom,
-            email: inputEmail
+            prenom: inputPrenom.trim(),
+            nom: inputNom.trim(),
+            email: inputEmail.trim()
         }).then((response) => {
-          console.log(response)
-          console.log("L'utilisateur a bien été créé")
-          console.log(response.data)
           setPrenom("")
           setNom("")
           setEmail("")

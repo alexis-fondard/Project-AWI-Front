@@ -26,19 +26,13 @@ const Header = () => {
 
   return (
     <div className="root">
-      <AppBar position="static" id="header" color='secondary'>
+      <AppBar position="static" id="header" color='secondary' className={'header'}>
         <Toolbar className={"navbar"}>
-          {/* <IconButton edge="start" className="menuButton" color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton> */}
           <Typography variant="h6" className="title">
             <RouterLink to="/">
               <img src={require('./assets/favicon/Festiland.png')} alt="Logo" />
             </RouterLink>
           </Typography>
-          {/* <Typography variant="h6">
-            <RouterLink to="/">Accueil</RouterLink>
-          </Typography> */}
           <Typography variant="h6">
             <RouterLink to="/jeux" id='jeux'>Jeux</RouterLink>
           </Typography>

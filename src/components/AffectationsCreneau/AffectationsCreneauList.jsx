@@ -52,6 +52,32 @@ function AffectationsCreneauList({affectations, setAffectations}){
    });
   }, []);
 
+
+  function formatDate(date){
+    let formatedDate = date;
+        
+    //Formatage parce que la valeur enregistré équivaut à H-1
+    formatedDate = formatedDate.substring(0,16).replace("T", " ").replaceAll("-","/")
+    if(formatedDate.charAt(11) === '2' && formatedDate.charAt(12) === '3'){
+      formatedDate = formatedDate.replaceAt(11,'0')
+      formatedDate = formatedDate.replaceAt(12,'0')
+    }else if(formatedDate.charAt(12) === '9' ){ 
+      if(formatedDate.charAt(11) === '1'){
+        formatedDate = formatedDate.replaceAt(11,'2')
+      }else{
+        formatedDate = formatedDate.replaceAt(11,'1')
+      }
+      formatedDate = formatedDate.replaceAt(12,'0')
+    }else{
+      let temp = Number(formatedDate.charAt(12))
+      temp = temp + 1
+      formatedDate = formatedDate.replaceAt(12,String(temp))
+    }
+    return formatedDate
+  }
+    
+
+
   function handleCrossClick(id,label,debut,fin,e){
     e.preventDefault()
     let deb = new Date(debut)
@@ -114,8 +140,8 @@ function AffectationsCreneauList({affectations, setAffectations}){
                     <TableCell>{affectation.benevole.nom}</TableCell>
                     <TableCell>{affectation.benevole.prenom}</TableCell>
                     <TableCell>{affectation.zone.label}</TableCell>
-                    <TableCell>{affectation.debut.substring(0,16).replace("T", " ").replaceAll("-","/")}</TableCell>
-                    <TableCell>{affectation.fin.substring(0,16).replace("T", " ").replaceAll("-","/")}</TableCell>
+                    <TableCell>{formatDate(affectation.debut)}</TableCell>
+                    <TableCell>{formatDate(affectation.fin)}</TableCell>
                     <TableCell><CancelIcon onClick={(e) => handleCrossClick(affectation.benevole.id,affectation.zone.label,affectation.debut,affectation.fin, e)}/></TableCell>
                   </TableRow>
                 );

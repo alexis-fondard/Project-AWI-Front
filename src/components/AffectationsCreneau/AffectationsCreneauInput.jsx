@@ -86,6 +86,7 @@ function AffectationsCreneauInput({affectations, setAffectations}){
         await axios.get(API_URL+"benevoles_zones/"+Date.parse(transformDate(inputDebut.$D, inputDebut.$M, inputDebut.$y,inputHours,inputMinutes))+"&"+Date.parse(transformDate(inputDebut.$D, inputDebut.$M, inputDebut.$y,inputHours2,inputMinutes2)), {})
         .then((response) => {
           setAffectations(affectations => response.data)
+          console.log(response.data)
           affectations.sort(function(a,b){return a.label > b.label ? 1 : -1})
         });
     } catch (error) {
@@ -103,9 +104,9 @@ function AffectationsCreneauInput({affectations, setAffectations}){
                 label=""
                 value={inputDebut}
                 onChange={(newValue) => {
+                  // console.log(inputDebut)
+                  // console.log(newValue)
                   setDebut(newValue);
-                  console.log(inputDebut)
-                  console.log(newValue)
                 }}
                 renderInput={(params) => <TextField {...params} />}
               />

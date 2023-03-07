@@ -9,6 +9,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Button from '@mui/material/Button';
 
 import '../../style/AffectationBenevoleCreateForm.css';
 
@@ -72,7 +73,7 @@ function AffectationCreateForm({id,benevole_affectations, setBenevoleAffectation
     const h = (hours1.startsWith("0") ? Number(hours1) : Number(hours1))
     const mi = mins1
   
-    //const s = "1970-01-20 00:56"
+    //const s = "1970-01-20 00:56" <=> Doit donner ce format
     console.log(y + "-" + m + "-" + d + " " + h + ":" + mi)
     return y + "-" + m + "-" + d + " " + h + ":" + mi
   }
@@ -195,7 +196,7 @@ function AffectationCreateForm({id,benevole_affectations, setBenevoleAffectation
           ))}
         </Select>
       </FormControl>
-      <button type="submit">Créer</button>
+      <Button type="submit" variant="contained" color="secondary">Créer</Button>
     </form>
     
     <div style={{'height':10}}></div>

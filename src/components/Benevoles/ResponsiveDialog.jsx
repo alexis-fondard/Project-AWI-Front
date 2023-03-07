@@ -34,23 +34,14 @@ export default function ResponsiveDialog({children,prenom,nom,id}) {
         maxWidth={'xl'}
         
       >
-        <DialogTitle id="responsive-dialog-title">
-          {"Affectations du bénévole :" + prenom + " " + nom}
+        <DialogTitle id="responsive-dialog-title" style={{'margin':'auto'}}>
+          { prenom.toUpperCase() + " " + nom.toUpperCase()}
         </DialogTitle>
         <DialogContent>
           {children}
-          {/* <DialogContentText>
-            Let Google help apps determine location. This means sending anonymous
-            location data to Google, even when no apps are running.
-          </DialogContentText> */}
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose}>
-            A voir ce qu'il faut en faire
-          </Button>
-          <Button onClick={handleClose} autoFocus>
-            Pareil
-          </Button>
+        
         </DialogActions>
       </Dialog>
     </React.Fragment>
