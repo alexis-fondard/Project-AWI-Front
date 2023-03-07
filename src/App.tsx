@@ -23,7 +23,7 @@ import JeuContenu from "./components/Jeux/JeuContenu";
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
   const defaultProtectedRouteProps: Omit<PrivateRouteProps, 'outlet'> = {
-    isAuthenticated: isAuthenticated,
+    isAuthenticated: true,
     authenticationPath: "/login",
   };
   

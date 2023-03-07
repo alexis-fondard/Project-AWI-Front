@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -29,6 +29,16 @@ function JeuCreateForm({jeu, setJeu}) {
         console.error(error);
     }
   };
+
+  // useEffect(() => {
+  //   try {
+  //     axios.get(API_URL + "type_jeu").then((response) => {
+  //       setOptions(response.data)
+  //     });
+  // } catch (error) {
+  //     console.error(error);
+  // }
+  // },[])
 
   return (
     <div>

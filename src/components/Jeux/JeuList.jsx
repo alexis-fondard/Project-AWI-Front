@@ -81,6 +81,7 @@ function JeuList2({jeux, setJeux}){
   axios.get(API_URL +"jeux")
   .then((response) => {
       // Get jeux DATA
+      console.log(response.data)
       setJeux(jeux => response.data); //set pokemon state
       jeux.sort(function(a,b){
         if (a.nom > b.nom) {
