@@ -95,9 +95,9 @@ function AffectationsCreneauInput({affectations, setAffectations}){
 
 
   return (<React.Fragment>
-    <div style={{'margin-top':10,'margin-left':'auto', 'margin-right':'auto'}}>
+    <div style={{'paddingTop':'-10px'}}>
     <form id="form1" onSubmit={(e) => handleCreate(e)}>
-      <div style={{'margin-top':'auto','margin-bottom':'auto','margin-bottom':10}}>Horaires de debut </div>
+      <h1 style={{'margin-bottom':'auto','margin-bottom':20, 'fontSize':'30px'}}>Horaires de debut </h1>
       <LocalizationProvider dateAdapter={AdapterDayjs} fullWidth='fullWidth'>
           <DesktopDatePicker
                 label=""
@@ -156,7 +156,7 @@ function AffectationsCreneauInput({affectations, setAffectations}){
     <div style={{'height':10}}></div>
 
     <form id="form2">
-    <div style={{'margin-bottom':10}}>Horaires de fin </div>
+    <h1 style={{'margin-bottom':20, 'fontSize':'30px'}}>Horaires de fin </h1>
     <FormControl style={{'width':100}}>        
         <InputLabel id="input-hours">Heures</InputLabel>
         <Select

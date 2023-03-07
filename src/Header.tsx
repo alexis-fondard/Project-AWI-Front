@@ -26,7 +26,7 @@ const Header = () => {
 
   return (
     <div className="root">
-      <AppBar position="static" id="header" >
+      <AppBar position="static" id="header" color='secondary'>
         <Toolbar className={"navbar"}>
           {/* <IconButton edge="start" className="menuButton" color="inherit" aria-label="menu">
             <MenuIcon />

@@ -73,10 +73,10 @@ function AffectationsCreneauList({affectations, setAffectations}){
       date_fin: f,
     }
     }).then(response => {
-      console.log(affectations[0].debut)
-      console.log(debut)
-      let filteredArray = affectations.filter(item => (item.debut !== debut && item.zone.label !== label))
-      console.log(filteredArray)
+      let obj = response.data
+      let filteredArray = affectations.filter(function(item){
+        return !(item.benevole.id === obj.id_benevole && item.debut === obj.debut && item.zone.label === obj.label_zone)
+      })
       setAffectations(affectations => filteredArray)
     }).then(error => {console.log(error)})
     

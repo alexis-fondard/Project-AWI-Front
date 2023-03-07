@@ -23,7 +23,7 @@ export default function ResponsiveDialog({children,prenom,nom,id}) {
 
   return (
     <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button variant="outlined" onClick={handleClickOpen} color='secondary'>
         Affectations
       </Button>
       <Dialog

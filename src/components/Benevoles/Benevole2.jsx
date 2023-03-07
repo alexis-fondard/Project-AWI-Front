@@ -63,7 +63,7 @@ function Benevole2({id,prenom,nom,email,benevoles,setBenevoles}){
             onChange={(event) => setEmail(event.target.value)}
         /></TableCell> 
         
-        <TableCell key={"popup"}><CheckCircleOutlineIcon onClick={(e) => handleClick(e)}/>
+        <TableCell key={"popup"}><CheckCircleOutlineIcon onClick={(e) => handleClick(e)} className={'iconArrow'}/>
         <CancelIcon/></TableCell>
         
       </React.Fragment>
@@ -72,7 +72,7 @@ function Benevole2({id,prenom,nom,email,benevoles,setBenevoles}){
       <TableCell key={"nom"}>{nom}</TableCell>
       <TableCell key={"prenom"}>{prenom}</TableCell>
       <TableCell key={"email"}>{email}</TableCell> 
-      <TableCell key={"popup"}><ResponsiveDialog id={id} prenom={prenom} nom={nom}><AffectationsBenevole id={id}></AffectationsBenevole></ResponsiveDialog><ModeEditIcon onClick={(e) => handleClick(e)}/><CancelIcon onClick={(e) => handleCrossClick(e)}/></TableCell>
+      <TableCell key={"popup"}><ResponsiveDialog id={id} prenom={prenom} nom={nom} ><AffectationsBenevole id={id}></AffectationsBenevole></ResponsiveDialog><ModeEditIcon onClick={(e) => handleClick(e)} className={'iconArrow'}/><CancelIcon onClick={(e) => handleCrossClick(e)} className={'iconArrow'}/></TableCell>
       </React.Fragment> 
 
     }

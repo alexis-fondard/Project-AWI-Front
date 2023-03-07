@@ -9,7 +9,7 @@ function BenevoleContenu(){
   const [benevoles,setBenevoles] = useState([])
 
   return (<React.Fragment>
-    <div className={'contenu'}>
+    <div className={['contenu']}>
       <BenevoleCreateForm benevoles = {benevoles} setBenevoles = {setBenevoles}/>
       <BenevoleList2 benevoles = {benevoles} setBenevoles = {setBenevoles}/>
     </div>

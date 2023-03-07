@@ -33,24 +33,31 @@ function BenevoleCreateForm({benevoles, setBenevoles}) {
   };
 
   return (
-    <form onSubmit={(e) => handleCreate(e)}>
-        <TextField type="text"
-            placeholder="Prenom"
-            value={inputPrenom}
-            onChange={(event) => setPrenom(event.target.value)}>
-        </TextField>
-        <TextField type="text"
-            placeholder="Nom"
-            value={inputNom}
-            onChange={(event) => setNom(event.target.value)}>
+    <div>
+      <h1>Création de bénévole </h1>
+      <form onSubmit={(e) => handleCreate(e)} style={{'display':'flex'}}>
+          <TextField type="text"
+              placeholder="Prenom"
+              value={inputPrenom}
+              onChange={(event) => setPrenom(event.target.value)}
+              style={{'margin-left':'10px','margin-right':'10px'}}>
           </TextField>
-        <TextField type="text"
-            placeholder="Email"
-            value={inputEmail}
-            onChange={(event) => setEmail(event.target.value)}>
-          </TextField> 
-        <Button type="submit" variant="contained" size="large" style={{'verticalAlign':'middle'}}>Créer</Button>
-    </form>
+          <TextField type="text"
+              placeholder="Nom"
+              value={inputNom}
+              onChange={(event) => setNom(event.target.value)}
+              style={{'margin-left':'10px','margin-right':'10px'}}>
+            </TextField>
+          <TextField type="text"
+              placeholder="Email"
+              value={inputEmail}
+              onChange={(event) => setEmail(event.target.value)}
+              style={{'margin-left':'10px','margin-right':'10px'}}>
+            </TextField> 
+          <Button type="submit" variant="contained" size="large" style={{'verticalAlign':'middle','margin-left':'10px','margin-right':'10px'}} color='secondary'>Créer</Button>
+      </form>
+
+    </div>
   );
 
 }

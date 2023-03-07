@@ -10,6 +10,8 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Benevole2 from './Benevole2';
 
+import '../../style/CommonToEveryWindow.css'
+
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
@@ -117,14 +119,14 @@ function BenevoleList2({benevoles, setBenevoles}){
   }
   
   return (
-    <Paper sx={{ width: '70%', overflow: 'hidden' }} style={{'margin':'auto'}}>
+    <Paper sx={{ overflow: 'hidden' }} style={{'margin':'auto'}}>
       <TableContainer sx={{ maxHeight: 600 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-              <TableCell key={"nom"} >{"Nom"} {!sortByNom ? <ArrowDownwardIcon onClick={(e) => sortBenevoles("nom",e)}/>: <ArrowUpwardIcon onClick={(e) => sortBenevoles("nom",e)}/> } </TableCell>
-              <TableCell key={"prenom"} >{"Prenom"} {!sortByPrenom ? <ArrowDownwardIcon onClick={(e) => sortBenevoles("prenom", e)}/>: <ArrowUpwardIcon onClick={(e) => sortBenevoles("prenom", e)}/> } </TableCell>
-              <TableCell key={"email"} >{"Email"} {!sortByEmail ? <ArrowDownwardIcon onClick={(e) => sortBenevoles("email", e)}/>: <ArrowUpwardIcon onClick={(e) => sortBenevoles("email", e)}/> } </TableCell>
+              <TableCell className={'tableCell'} key={"nom"}>{"Nom"} {!sortByNom ? <ArrowDownwardIcon onClick={(e) => sortBenevoles("nom",e)} className={'iconArrow'}/>: <ArrowUpwardIcon onClick={(e) => sortBenevoles("nom",e)} className={'iconArrow'}/> } </TableCell>
+              <TableCell className={'tableCell'} key={"prenom"}>{"Prenom"} {!sortByPrenom ? <ArrowDownwardIcon onClick={(e) => sortBenevoles("prenom", e)} className={'iconArrow'}/>: <ArrowUpwardIcon onClick={(e) => sortBenevoles("prenom", e)} className={'iconArrow'}/> } </TableCell>
+              <TableCell className={'tableCell'} key={"email"}>{"Email"} {!sortByEmail ? <ArrowDownwardIcon onClick={(e) => sortBenevoles("email", e)} className={'iconArrow'}/>: <ArrowUpwardIcon onClick={(e) => sortBenevoles("email", e)} className={'iconArrow'}/> } </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
